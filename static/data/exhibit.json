@@ -1,0 +1,7 @@
+{
+    "title" : "Highly Recommended",
+    "description": "This is a test of your identity. Once you sign in, you will be asked to answer a series of 'this or that' style questions. You'll have the opportunity to choose either the left or right option. As you go along, we'll use DesignCraft's data store to make sure you're in tune with yourself. If you're not, we'll help remind you of your preferences so you can keep working to be the person you hope to become.",
+    "players": "1 user at a time. Scan your bracelet to begin, and again at anytime if you need to log out.",
+    "buttons": 2,
+    "data": false
+}

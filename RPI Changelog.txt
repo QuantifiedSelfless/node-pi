@@ -1,0 +1,73 @@
+RPI Changelog:
+Adafruit Repository:
+curl -sLS https://apt.adafruit.com/add | sudo bash
+
+sudo raspi-config:
+overclock-medium
+expand filesystem
+
+sudo apt-get update
+sudo apt-get upgrade
+
+npm install raspi-io
+npm install johnny-five
+
+sudo npm install -g raspi-io --unsafe-perm
+sudo npm install -g johnny-five --unsafe-perm
+
+
+sudo npm install -g node-hid --unsafe-perm
+
+sudo apt-get install libudev-dev libusb-1.0-0-dev 
+
+sudo npm link node-hid
+
+var HID = require('node-hid');
+var devices = HID.devices();
+var device = new HID.HID(65535,53);
+
+
+node-hid command examples:
+
+device.on("data", function(data) {console.log(data[0]);console.log("!!!");})
+
+device.on("data", function(data) {console.log(data.toString('utf-8'));});
+
+device.on("data", function(data) {console.log(data);});
+
+var hid = require('hidstream');
+
+var devices = hid.devices();
+
+var key = new hid.device(devices[0].path,{ 'parser' : hid.parser.keyboard });
+
+var hid = require('hidstream');
+
+var devices = hid.devices();
+
+var RFID = new hid.device(devices[0].path,{ 'parser' : hid.parser.newline });
+
+RFID.on("data", function(data) {console.log(data) });
+
+
+	var broadcast = function(cn) {console.log("Broadcast: " + cn.trim());for(var c in connections)connections[c].write(cn);}
+
+
+
+Image Write back to Asus
+
+07206660
+
+Synergy Install:
+Install Dependancies
+sudo apt-get install cmake make g++ xorg-dev libqt4-dev libcurl4-openssl-dev libavahi-compat-libdnssd-dev libssl-dev
+
+wget http://synergy-project.org/download/file/?file=synergy-v1.7.5-stable-fa85a24-Source.tar.gz
+
+tar xzf synergy-v1.7.5-stable-fa85a24-Source.tar.gz
+
+cd synergy-v1.7.5-stable-fa85a24-Source.tar.gz
+
+./hm.sh conf -g1
+./hm.sh buil
+
