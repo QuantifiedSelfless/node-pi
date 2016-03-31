@@ -13,6 +13,17 @@ $.getJSON("static/data/exhibit.json", function (data) {
 setTimeout(function () {
     addCard(user_info);}, 6000);
 
+setTimeout(function () {
+    addCard(user_info);}, 12000);
+
+setTimeout(function () {
+    addCard(user_info);},
+    18000);
+
+setTimeout(function () {
+    badPlayer();},
+    10000);
+
 function addCard(userinfo) {
     name = userinfo.name;
     elem = "<div class='card flex-auto'>\
@@ -26,5 +37,8 @@ function addCard(userinfo) {
                 </div>\
             </div>";
     $('#login').append(elem);
+}
 
+function badPlayer() {
+    toastr.error('This user is unauthorized to use this companion. Please consider sharing more with DesignCraft for a better experience.', 'User Not Allowed', {positionClass: "toast-top-full-width"});
 }

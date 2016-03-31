@@ -23,7 +23,7 @@
 
 #details {
     background-color: #333030;
-    min-height: 60vh;
+    height: 50vh;
 /*    background-color: #37483e;
 */}
 
@@ -37,19 +37,33 @@
 
 #explay {
     font-size: 22px;
+    font-style: italic;
+    line-height: 8px;
+    margin-top: 2em;
+}
+
+#foot {
+    background-color: #333030;
+    min-height: 10vh;
 }
 
 #login {
-    min-height: 20vh;
+    
     background-color: #37483e;
+    border-top: thick solid #d2bb5d;
+    border-bottom: thick solid #d2bb5d;
 }
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
     max-width: 20%;
-    margin: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 .card h3 {
     margin: 0px;
+    background-color: #616161;
 }
 
 .conf {
