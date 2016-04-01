@@ -6,10 +6,8 @@ var express = require('express'),
     raspi = require('raspi-io');
 
 var hid = require('hidstream')
-var sockio = require('socket.io').listen(server);
 
 //RFID PID finder vars
-var RFID = new hid.device(devices[0].path, { 'parser' : hid.parser.newline });
 var devices = hid.devices();
 var rfidDev = -7;
 var vid = 65535;
@@ -32,6 +30,7 @@ else {
 server = http.createServer(app);
 server.listen(3000);
 
+var sockio = require('socket.io').listen(server);
 //Shouldn't need this stuff
 // app.use(express.static(__dirname));
 
@@ -89,5 +88,4 @@ board.on("ready", function() {
     //   console.log('LED');
     //   led.on();
     });
-  }); 
-});
+  });

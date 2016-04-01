@@ -9,12 +9,19 @@ var player3 = null;
 var player4 = null;
 
 $.getJSON("static/data/exhibit.json", function (data) {
+    console.log("got the exhibit!");
+    console.log(data);
     $('#extitle').text(data.title);
     $('#exdetails').text(data.description);
     $('#explay').text(data.players);
     buttons = data.buttons;
     needData = data.data;
-})
+}).done(function (data) {
+   console.log("all done");
+   console.log(data);
+}).fail( function () {
+	console.log("shitty error!");
+});
 
 socket.on('rfid', function (data) {
     console.log(data.user_id);
@@ -56,7 +63,7 @@ function addCard(userinfo) {
                   <h3>" + name + "</h3>\
                 </header>\
                 <div class='conf flex flex-center'>\
-                  <img src='/static/img/Yellow-Tree-Logo.png'\
+                  <img src='/static/img/Yellow-Tree-logo.png'\
                   class='flex-auto' style='width: 5%'>\
                   <p class='flex-auto'>Connected</p>\
                 </div>\
