@@ -26,7 +26,7 @@ $.getJSON("static/data/exhibit.json", function (data) {
 socket.on('rfid', function (data) {
     console.log(data.user_id);
     data.name = data.user_id;
-    addCard(data.user_id);
+    addCard(data);
 
 })
 
