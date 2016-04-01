@@ -1,0 +1,25 @@
+{
+  "name": "node-pi",
+  "version": "1.0.0",
+  "description": "Raspberry Pi configuration and Node Scripts",
+  "main": "button-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuantifiedSelfless/node-pi.git"
+  },
+  "author": "Michael Warren Skirpan <michael.skirpan@colorado.edu> (http://mwskirpan.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QuantifiedSelfless/node-pi/issues"
+  },
+  "homepage": "https://github.com/QuantifiedSelfless/node-pi#readme",
+  "dependencies": {
+    "raspi-io": "^5.4.1",
+    "express": "^4.13.4",
+    "johnny-five": "^0.9.35",
+    "socket.io": "^1.4.5"
+  }
+}

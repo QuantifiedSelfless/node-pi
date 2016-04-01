@@ -1,6 +1,12 @@
+var socket = io.connect('http://localhost:3000');
 var buttons;
 var needData;
 var user_info = {"name": "Mike Skirpan"};
+
+var player1 = null;
+var player2 = null;
+var player3 = null;
+var player4 = null;
 
 $.getJSON("static/data/exhibit.json", function (data) {
     $('#extitle').text(data.title);
@@ -10,19 +16,38 @@ $.getJSON("static/data/exhibit.json", function (data) {
     needData = data.data;
 })
 
-setTimeout(function () {
-    addCard(user_info);}, 6000);
+socket.on('rfid', function (data) {
+    console.log(data.user_id);
+    data.name = data.user_id;
+    addCard(data.user_id);
 
-setTimeout(function () {
-    addCard(user_info);}, 12000);
+})
 
-setTimeout(function () {
-    addCard(user_info);},
-    18000);
 
-setTimeout(function () {
-    badPlayer();},
-    10000);
+socket.on('button1', function(){
+    console.log("Button 1 Received!");
+    // socket.emit('pressed');
+
+});
+
+socket.on('button2', function(){
+    console.log("Button 2 Received!");
+    // socket.emit('pressed');
+
+});
+
+socket.on('button3', function(){
+    console.log("Button 3 Received!");
+    // socket.emit('pressed');
+
+});
+
+socket.on('button4', function(){
+    console.log("Button 4 Received!");
+    // socket.emit('pressed');
+
+});
+
 
 function addCard(userinfo) {
     name = userinfo.name;
@@ -42,3 +67,5 @@ function addCard(userinfo) {
 function badPlayer() {
     toastr.error('This user is unauthorized to use this companion. Please consider sharing more with DesignCraft for a better experience.', 'User Not Allowed', {positionClass: "toast-top-full-width"});
 }
+
+

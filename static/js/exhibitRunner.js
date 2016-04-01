@@ -1,0 +1,93 @@
+var express = require('express'),
+    app = express(),
+    http = require('http'),
+    fs = require('fs'),
+    five = require('johnny-five'),
+    raspi = require('raspi-io');
+
+var hid = require('hidstream')
+var sockio = require('socket.io').listen(server);
+
+//RFID PID finder vars
+var RFID = new hid.device(devices[0].path, { 'parser' : hid.parser.newline });
+var devices = hid.devices();
+var rfidDev = -7;
+var vid = 65535;
+var pid = 53;
+
+for (var i = devices.length - 1; i >= 0; i--) {
+  if(devices[i].vendorId == vid && devices[i].productId == pid )
+    rfidDev = i;
+}
+
+if(rfidDev != -7) {
+  var RFID = new hid.device(devices[rfidDev].path,{ 'parser' : hid.parser.newline });
+}
+else { 
+  console.log("Unable to find the RFID Reader :(");
+}
+
+
+
+server = http.createServer(app);
+server.listen(3000);
+
+//Shouldn't need this stuff
+// app.use(express.static(__dirname));
+
+// app.get('/', function(req,res){
+//   res.send('Hello');
+// })
+
+
+board = new five.Board({
+  io: new raspi()
+});
+
+
+board.on("ready", function() {
+  button1 = new five.Button({
+    pin: 12,
+  });
+  button2 = new five.Button({
+    pin: 3,
+  });
+  button3 = new five.Button({
+    pin: 2,
+  });
+  button4 = new five.Button({
+    pin: 0,
+  });
+
+  sockio.sockets.on('connection', function (socket) {
+
+    button1.on('down', function(){
+      socket.emit('button1');
+      console.log('button1 pressed');
+    });
+
+    button2.on('down', function(){
+      socket.emit('button2');
+      console.log('button2 pressed');
+    });
+
+    button3.on('down', function(){
+      socket.emit('button3');
+      console.log('button3 pressed');
+    });
+
+    button4.on('down', function(){
+      socket.emit('button4');
+      console.log('button4 pressed');
+    });
+
+    RFID.on("data", function (data) {
+      socket.emit('rfid', {user_id : data });
+    });
+
+    // socket.on('pressed', function(){
+    //   console.log('LED');
+    //   led.on();
+    });
+  }); 
+});
