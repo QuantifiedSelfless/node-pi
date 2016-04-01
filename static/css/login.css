@@ -9,6 +9,10 @@
     width: 15%;
 }
 
+#header-wrap {
+    padding-top: 10px;
+}
+
 #header p {
     font-size: 26px;
 }

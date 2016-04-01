@@ -55,6 +55,8 @@ socket.on('button4', function(){
 
 });
 
+setTimeout(badPlayer, 5000);
+
 
 function addCard(userinfo) {
     name = userinfo.name;
