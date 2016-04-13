@@ -10,7 +10,7 @@ var player1 = null;
 var player2 = null;
 var player3 = null;
 var player4 = null;
-var url = "localhost:7070?"
+var url = "http://localhost:7070?"
 //Need to add per-exhibit route
 var backendurl = "quantifiedselfbackend.local"
 
@@ -98,7 +98,7 @@ socket.on('button4', function(){
 
 
 function addCard(userinfo) {
-    name = userinfo.name;
+    name = userinfo.user_id;
     elem = "<div class='card flex-auto'>\
                 <header class='card-head'>\
                   <h3>" + name + "</h3>\
