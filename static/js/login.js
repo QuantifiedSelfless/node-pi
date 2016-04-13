@@ -66,7 +66,7 @@ socket.on('rfid', function (data) {
 
 function runGame () {
     for (play in players){
-        url += "userid=" + players[play] + "&";
+        url += "userid" + play + "=" + players[play] + "&";
     }
     window.location = url;
 }
