@@ -13,10 +13,9 @@ var rfidDev = -7;
 var vid = 65535;
 var pid = 53;
 
-for (var i = devices.length - 1; i >= 0; i--) {
-  if(devices[i].vendorId == vid && devices[i].productId == pid )
-    rfidDev = i;
-}
+rfidDev = devices.find(function (d) {
+  return (d.vendorId == vid && d.productId == pid);
+});
 
 if(rfidDev != -7) {
   var RFID = new hid.device(devices[rfidDev].path,{ 'parser' : hid.parser.newline });
@@ -25,24 +24,14 @@ else {
   console.log("Unable to find the RFID Reader :(");
 }
 
-
-
 server = http.createServer(app);
 server.listen(3000);
 
 var sockio = require('socket.io').listen(server);
-//Shouldn't need this stuff
-// app.use(express.static(__dirname));
-
-// app.get('/', function(req,res){
-//   res.send('Hello');
-// })
-
 
 board = new five.Board({
   io: new raspi()
 });
-
 
 board.on("ready", function() {
   button1 = new five.Button({
