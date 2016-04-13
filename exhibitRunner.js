@@ -18,7 +18,7 @@ rfidDev = devices.find(function (d) {
 });
 
 if(rfidDev != -7) {
-  var RFID = new hid.device(devices[rfidDev].path,{ 'parser' : hid.parser.newline });
+  var RFID = new hid.device(rfidDev.path, { 'parser' : hid.parser.newline });
 }
 else { 
   console.log("Unable to find the RFID Reader :(");
