@@ -73,8 +73,4 @@ board.on("ready", function() {
       socket.emit('rfid', {user_id : data });
     });
 
-    // socket.on('pressed', function(){
-    //   console.log('LED');
-    //   led.on();
-    });
   });
