@@ -11,7 +11,7 @@ $.getJSON("static/data/exhibit.json", function (data) {
     $('#extitle').text(data.title);
     $('#exdetails').text(data.description);
     $('#explay').text(data.players);
-    redirectionTimer = data.timer;
+    redirectionTimer = data.timer || 5000;
     numPlayers = data.numPlay
     bakendurl = data.backendurl || backendurl;
 }).done(function (data) {
@@ -24,7 +24,7 @@ $.getJSON("static/data/exhibit.json", function (data) {
 function runGame () {
 
     if (numPlayers == 1) {
-        baseurl += "userid=" + players[play];
+        baseurl += "userid=" + players[0];
     } else {
         for (play in players){
             baseurl += "userid" + play + "=" + players[play] + "&";
@@ -61,7 +61,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         success: function(resp) {
             name = resp.name || "User";
             addCard(name);
-            startTimer = setTimeout( runGame, 8000);
+            startTimer = setTimeout( runGame, redirectionTimer);
             return true;
         },
         error: function(resp) {
@@ -119,9 +119,12 @@ $(document).ready(function () {
         clearTimeout(startTimer);
         console.log(data.user_id);
         userid = data.user_id;
-        permission = make_AJAX_call(bakendurl, {"userid": userid}, 0, 3);
-        addCard(data);
         players.push(data.user_id);
+        if (debug == true){
+            setTimeout(runGame, redirectionTimer); 
+        } else {
+            permission = make_AJAX_call(bakendurl, {"userid": userid}, 0, 3);
+        }
 
     });
 
