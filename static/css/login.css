@@ -1,7 +1,7 @@
 #header {
     border-color: #d2bb5d;
     border-bottom: thick solid #d2bb5d;
-    min-height: 20vh;
+    min-height: 10vh;
     background-color: #37483e;
 }
 
@@ -27,7 +27,7 @@
 
 #details {
     background-color: #333030;
-    height: 50vh;
+    height: 40vh;
 /*    background-color: #37483e;
 */}
 
@@ -48,7 +48,7 @@
 
 #foot {
     background-color: #333030;
-    min-height: 10vh;
+    min-height: 12vh;
 }
 
 #login {
