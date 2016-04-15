@@ -25,7 +25,7 @@ else {
 }
 
 server = http.createServer(app);
-server.listen(3000);
+server.listen(7000);
 
 var sockio = require('socket.io').listen(server);
 
