@@ -1,4 +1,6 @@
 //Get Exhibit JSON
+var debug = true;
+
 var numPlayers;
 var redirectionTimer;
 var backendurl = 'quantifiedselfbackend.local';
