@@ -53,7 +53,6 @@ function addCard(userinfo) {
 }
 
 function make_AJAX_call(url, data, tryCount, retryLimit){
-
     $.ajax({
         type: 'GET',
         url: url,
