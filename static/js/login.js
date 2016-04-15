@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://10.0.0.145:3000');
 var buttons;
 var needData;
 var user_info = {"name": "Mike Skirpan"};
@@ -10,7 +10,7 @@ var player1 = null;
 var player2 = null;
 var player3 = null;
 var player4 = null;
-var url = "http://localhost:7070?"
+var url = "http://10.0.0.145:7070?"
 //Need to add per-exhibit route
 var backendurl = "quantifiedselfbackend.local"
 
@@ -60,8 +60,9 @@ socket.on('rfid', function (data) {
     // });
     addCard(data);
     players.push(data.user_id);
-    startTimer = setTimeout( runGame, 8000);
-
+    if (players.length == 2){
+     startTimer = setTimeout( runGame, 8000);
+    }
 });
 
 function runGame () {
