@@ -15,7 +15,8 @@ $.getJSON("static/data/exhibit.json", function (data) {
     $('#explay').text(data.players);
     redirectionTimer = data.timer || 5000;
     numPlayers = data.numPlay
-    bakendurl = data.backendurl || backendurl;
+    backendurl = data.backendurl || backendurl;
+    baseurl = data.baseurl || baseurl;
 }).done(function (data) {
    console.log("all done");
    console.log(data);

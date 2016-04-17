@@ -4,5 +4,6 @@
     "players": "1 user at a time. Scan your bracelet to begin, and again at anytime if you need to log out.",
     "numPlay" : 1,
     "timer" : 4000,
-    "backendurl" : "http://quantifiedselfbackend.local/processor_name?"
+    "backendurl" : "http://quantifiedselfbackend.local/processor_name?",
+    "baseurl" : "http://localhost:7070?"
 }
