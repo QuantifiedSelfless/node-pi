@@ -1,4 +1,4 @@
 .DS_Store
 node_modules/
 *.log
-static/data/*.json
+static/data/exhibit.json
