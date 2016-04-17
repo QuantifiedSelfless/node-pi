@@ -47,8 +47,7 @@ function badPlayer() {
     toastr.error('This user is unauthorized to use this companion. Please consider sharing more with DesignCraft for a better experience.', 'User Not Allowed', {positionClass: "toast-top-full-width"});
 }
 
-function addCard(userinfo) {
-    name = userinfo.user_id;
+function addCard(name) {
     elem = "<div class='card flex-auto'>\
                 <header class='card-head'>\
                   <h3>" + name + "</h3>\
@@ -69,7 +68,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         data: data,
         success: function(resp) {
             console.log(resp);
-	    name = resp.name || "User";
+	        name = resp.name || "User";
             addCard("Test Man");
             startTimer = setTimeout( runGame, redirectionTimer);
             return true;
@@ -132,8 +131,8 @@ $(document).ready(function () {
         userid = data.user_id;
         players.push(data.user_id);
         if (debug == true){
-	    addCard("Test Dude");
-            setTimeout(runGame, redirectionTimer); 
+	       addCard("Test Dude");
+           setTimeout(runGame, redirectionTimer); 
         } else {
 	    good_url = backendurl += "rfid=" + userid;
             permission = make_AJAX_call(backendurl, {"userid": userid}, 0, 3);
