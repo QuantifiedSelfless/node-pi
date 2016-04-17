@@ -1,0 +1,97 @@
+#header {
+    border-color: #d2bb5d;
+    border-bottom: thick solid #d2bb5d;
+    min-height: 10vh;
+    background-color: #37483e;
+}
+
+#header img {
+    width: 15%;
+}
+
+#header-wrap {
+    padding-top: 10px;
+}
+
+#header p {
+    font-size: 26px;
+}
+
+.quick {
+    font-family: 'Quicksand';
+}
+
+.arvo {
+    font-family: 'Arvo';
+}
+
+#details {
+    background-color: #333030;
+    height: 40vh;
+/*    background-color: #37483e;
+*/}
+
+#extitle {
+    font-size: 36px;
+}
+
+#exdetails {
+    font-size: 26px;
+}
+
+#explay {
+    font-size: 22px;
+    font-style: italic;
+    line-height: 8px;
+    margin-top: 2em;
+}
+
+#foot {
+    background-color: #333030;
+    min-height: 12vh;
+}
+
+#login {
+    
+    background-color: #37483e;
+    border-top: thick solid #d2bb5d;
+    border-bottom: thick solid #d2bb5d;
+    min-height: 20vh;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    max-width: 20%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2em;
+    margin-right: 2em;
+    background-color: #616161;
+
+}
+.card h3 {
+    margin: 0px;
+    background-color: #616161;
+}
+
+.conf {
+    background-color: white;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+.conf img {
+    float: left;
+    padding: 5px;
+}
+
+.conf p {
+    padding-top: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
+    font-family: "Quicksand";
+    font-weight: 700;
+}
+
+.card-head {
+    background-color: #616161;
+}
