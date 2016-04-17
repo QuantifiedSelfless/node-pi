@@ -1,5 +1,5 @@
 //Get Exhibit JSON
-var debug = true;
+var debug = false;
 
 var numPlayers;
 var redirectionTimer;
@@ -40,7 +40,7 @@ function runGame () {
         }
     }
         
-    window.location = url;
+    window.location = baseurl;
 }
 
 function badPlayer() {
@@ -68,8 +68,9 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         url: url,
         data: data,
         success: function(resp) {
-            name = resp.name || "User";
-            addCard(name);
+            console.log(resp);
+	    name = resp.name || "User";
+            addCard("Test Man");
             startTimer = setTimeout( runGame, redirectionTimer);
             return true;
         },
@@ -131,9 +132,11 @@ $(document).ready(function () {
         userid = data.user_id;
         players.push(data.user_id);
         if (debug == true){
+	    addCard("Test Dude");
             setTimeout(runGame, redirectionTimer); 
         } else {
-            permission = make_AJAX_call(bakendurl, {"userid": userid}, 0, 3);
+	    good_url = backendurl += "rfid=" + userid;
+            permission = make_AJAX_call(backendurl, {"userid": userid}, 0, 3);
         }
 
     });
