@@ -26,13 +26,20 @@ $.getJSON("static/data/exhibit.json", function (data) {
 
 function runGame () {
 
-    if (numPlayers == 1) {
+    if (numPlayers == 1 && debug == true) {
         baseurl += "userid=" + players[0];
-    } else {
+    } else if ( numPlayers == 1 && debug == false) {
+        baseurl += "rfid=" + players[0];
+    } else if ( numPlayers > 1 && debug == true) {
         for (play in players){
             baseurl += "userid" + play + "=" + players[play] + "&";
         }
+    } else {
+        for (play in players){
+            baseurl += "rfid" + play + "=" + players[play] + "&";
+        }
     }
+        
     window.location = url;
 }
 
@@ -69,6 +76,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         error: function(resp) {
             if (resp.statusCode == 403) {
                 badPlayer();
+                return;
             }
             tryCount++;
             if (tryCount >= retryLimit){
