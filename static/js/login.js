@@ -86,7 +86,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
             }
             else { //Try again with exponential backoff.
                 setTimeout(function(){ 
-                    return make_AJAX_call(data, transition, tryCount, retryLimit);
+                    return make_AJAX_call(url, data, tryCount, retryLimit);
                 }, Math.pow(2, tryCount) * 1000);
                 return false;
             }
