@@ -26,6 +26,7 @@ $.getJSON("static/data/exhibit.json", function (data) {
 });
 
 function runGame () {
+    // Once we have Amelia's ID band, we'll need to add an exception in for her
 
     if (numPlayers == 1 && userids == true) {
         baseurl += "userid=" + players[0] + "&";
