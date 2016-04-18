@@ -12,6 +12,8 @@ gulp.task('build-romance', function () {
         .pipe(gulp.dest('./'));
     gulp.src('src/css/romance/login.css')
         .pipe(gulp.dest('static/css'));
+    gulp.src('src/js/romance/login.js')
+        .pipe(gulp.dest('static/js'));
 });
 
 gulp.task('build-tracked', function () {
