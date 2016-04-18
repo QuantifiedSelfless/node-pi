@@ -137,10 +137,10 @@ $(document).ready(function () {
            setTimeout(runGame, redirectionTimer); 
         } else if (debug == true && userids == true) {
             //Need to hard code a userid for testing
-            good_url = backendurl += "userid=" + userid;
+            good_url = backendurl + "userid=" + userid;
             permission = make_AJAX_call(good_url, {"userid": userid}, 0, 3);
         } else {
-    	    good_url = backendurl += "rfid=" + userid;
+    	    good_url = backendurl + "rfid=" + userid;
             permission = make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
         }
     });
