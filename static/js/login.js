@@ -1,5 +1,6 @@
 //Get Exhibit JSON
 var debug = false;
+var userids = false;
 
 var numPlayers;
 var redirectionTimer;
@@ -26,11 +27,11 @@ $.getJSON("static/data/exhibit.json", function (data) {
 
 function runGame () {
 
-    if (numPlayers == 1 && debug == true) {
-        baseurl += "userid=" + players[0];
+    if (numPlayers == 1 && userids == true) {
+        baseurl += "userid=" + players[0] + "&";
     } else if ( numPlayers == 1 && debug == false) {
-        baseurl += "rfid=" + players[0];
-    } else if ( numPlayers > 1 && debug == true) {
+        baseurl += "rfid=" + players[0] + "&";
+    } else if ( numPlayers > 1 && userids == true) {
         for (play in players){
             baseurl += "userid" + play + "=" + players[play] + "&";
         }
@@ -70,6 +71,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
             console.log(resp);
 	        name = resp.name || "User";
             addCard("Test Man");
+            players.push(data.rfid);
             startTimer = setTimeout( runGame, redirectionTimer);
             return true;
         },
@@ -80,7 +82,8 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
             }
             tryCount++;
             if (tryCount >= retryLimit){
-                return "bad server";
+                toastr.error("Something went wrong on DesignCraft's servers. Please try signing in again.", {positionClass: "toast-top-full-width"});
+                return;
             }
             else { //Try again with exponential backoff.
                 setTimeout(function(){ 
@@ -122,22 +125,24 @@ $(document).ready(function () {
 
         }
         if (players.length == numPlayers) {
-            toastr.error('You are trying to sign in too many users to this companion. Wait your turn!', {positionClass: "toast-top-full-width"});
+            toastr.error('You are trying to sign in too many users to this Companion. Wait your turn!', {positionClass: "toast-top-full-width"});
             return;
         }
 
         clearTimeout(startTimer);
         console.log(data.user_id);
         userid = data.user_id;
-        players.push(data.user_id);
-        if (debug == true){
+        if (debug == true && userids == false){
 	       addCard("Test Dude");
            setTimeout(runGame, redirectionTimer); 
+        } else if (debug == true && userids == true) {
+            //Need to hard code a userid for testing
+            good_url = backendurl += "userid=" + userid;
+            permission = make_AJAX_call(good_url, {"userid": userid}, 0, 3);
         } else {
-	    good_url = backendurl += "rfid=" + userid;
-            permission = make_AJAX_call(backendurl, {"userid": userid}, 0, 3);
+    	    good_url = backendurl += "rfid=" + userid;
+            permission = make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
         }
-
     });
 
 });
