@@ -7,6 +7,8 @@ var redirectionTimer;
 var backendurl = 'quantifiedselfbackend.local';
 var startTimer;
 var baseurl = "http://10.0.0.145:7070";
+var socket = io.connect('http://10.0.0.145:3000');
+
 
 $.getJSON("static/data/exhibit.json", function (data) {
     console.log("got the exhibit!");
@@ -94,7 +96,6 @@ function getURLParams() {
 };
 
 
-var socket = io.connect('http://localhost:3000');
 var players = [];
 
 $(document).ready(function () {
