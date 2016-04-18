@@ -66,7 +66,6 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     $.ajax({
         type: 'GET',
         url: url,
-        data: data,
         success: function(resp) {
             console.log(resp);
 	        name = resp.name || "User";
