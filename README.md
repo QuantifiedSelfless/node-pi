@@ -10,7 +10,7 @@ If you have an exhibit that requires special styling, place your desired files i
 
 ## Raspberry Pi Network Configuration
 
-Steps:
+####Steps:
 1. Setup the hostname and mdns using ```sudo ./setup_network.sh```
 2. Install the ssh keys using ```./install_ssh_keys.sh``` 
 
