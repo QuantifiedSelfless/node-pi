@@ -17,3 +17,6 @@ If you have an exhibit that requires special styling, place your desired files i
 OR
 
 if it's the first time you're setting up the pi just run `sudo ./setup.sh`
+
+## Testing
+If you want to run tests without rfid scanners or just to make sure the exhibit redirections work, look into `static/js/login.js`. There are specific `debug` and `userids` variables. `debug` allows you to run the exhibit without correct permissions and `userids` allows you to use userids instead of rfids.
