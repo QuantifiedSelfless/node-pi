@@ -9,6 +9,16 @@ var startTimer;
 var baseurl = "http://10.0.0.145:7070";
 var socket = io.connect('http://10.0.0.145:3000');
 
+var elem = document.body;
+if (elem.requestFullscreen) {
+  elem.requestFullscreen();
+} else if (elem.msRequestFullscreen) {
+  elem.msRequestFullscreen();
+} else if (elem.mozRequestFullScreen) {
+  elem.mozRequestFullScreen();
+} else if (elem.webkitRequestFullscreen) {
+  elem.webkitRequestFullscreen();
+}
 
 $.getJSON("static/data/exhibit.json", function (data) {
     console.log("got the exhibit!");
