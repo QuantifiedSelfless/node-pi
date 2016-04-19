@@ -69,7 +69,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         url: url,
         success: function(resp) {
             console.log(resp);
-            name = resp.name || "User";
+            name = resp.data.name || "User";
             addCard(name);
             players.push(data.rfid);
             startTimer = setTimeout( runGame, redirectionTimer);
