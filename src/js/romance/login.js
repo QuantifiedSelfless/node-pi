@@ -6,9 +6,7 @@ var numPlayers;
 var redirectionTimer;
 var backendurl = 'quantifiedselfbackend.local';
 var startTimer;
-var baseurl = "http://romance.local:7070";
-var socket = io.connect('http://romance.local:3000');
-
+var baseurl = "http://localhost:7070?";
 
 $.getJSON("static/data/exhibit.json", function (data) {
     console.log("got the exhibit!");
@@ -29,6 +27,20 @@ $.getJSON("static/data/exhibit.json", function (data) {
 
 function runGame () {
 
+    if (numPlayers == 1 && userids == true) {
+        baseurl += "userid=" + players[0] + "&";
+    } else if ( numPlayers == 1 && debug == false) {
+        baseurl += "rfid=" + players[0] + "&";
+    } else if ( numPlayers > 1 && userids == true) {
+        for (play in players){
+            baseurl += "userid" + play + "=" + players[play] + "&";
+        }
+    } else {
+        for (play in players){
+            baseurl += "rfid" + play + "=" + players[play] + "&";
+        }
+    }
+        
     window.location = baseurl;
 }
 
@@ -56,10 +68,12 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         url: url,
         success: function(resp) {
             console.log(resp);
-            name = resp.data[0].name || "User";
+            name = resp.data[0].name|| "User";
             addCard(name);
             players.push(data.rfid);
-            startTimer = setTimeout( runGame, redirectionTimer);
+            if (players.length == 2) {
+                startTimer = setTimeout( runGame, redirectionTimer);
+            }
             return true;
         },
         error: function(resp) {
@@ -96,6 +110,7 @@ function getURLParams() {
 };
 
 
+var socket = io.connect('http://localhost:3000');
 var players = [];
 
 $(document).ready(function () {
@@ -119,15 +134,17 @@ $(document).ready(function () {
         clearTimeout(startTimer);
         console.log(data.user_id);
         userid = data.user_id;
-        if (players.length == 0){
-            players.push(userid);
-            addCard("Lover 1");
-        } else if (players.length == 1){
-            players.push(userid);
-            addCard("Lover 2");
-            setTimeout(runGame, redirectionTimer); 
+        if (debug == true && userids == false){
+           addCard("Test Dude");
+           setTimeout(runGame, redirectionTimer); 
+        } else if (debug == true && userids == true) {
+            //Need to hard code a userid for testing
+            good_url = backendurl + "userid=" + userid;
+            permission = make_AJAX_call(good_url, {"userid": userid}, 0, 3);
+        } else {
+            good_url = backendurl + "rfid=" + userid;
+            permission = make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
         }
-        
     });
 
 });
