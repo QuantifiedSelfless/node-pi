@@ -5,6 +5,10 @@
     background-color: #37483e;
 }
 
+body {
+    cursor: none;
+}
+
 #header img {
     width: 15%;
 }

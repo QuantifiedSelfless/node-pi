@@ -5,6 +5,10 @@
     background-color: #37483e;
 }
 
+body {
+    cursor: none;
+}
+
 #header img {
     width: 15%;
 }
@@ -27,7 +31,7 @@
 
 #details {
     background-color: #333030;
-    height: 40vh;
+    height: 50vh;
 /*    background-color: #37483e;
 */}
 
@@ -42,7 +46,6 @@
 #explay {
     font-size: 22px;
     font-style: italic;
-    line-height: 8px;
     margin-top: 2em;
 }
 
@@ -61,6 +64,7 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
     max-width: 20%;
+    min-height: 80%;
     margin-top: 2px;
     margin-bottom: 2px;
     margin-left: 2em;
@@ -95,3 +99,4 @@
 .card-head {
     background-color: #616161;
 }
+
