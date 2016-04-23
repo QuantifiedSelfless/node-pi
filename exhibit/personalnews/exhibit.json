@@ -1,0 +1,9 @@
+{
+    "title" : "In the News",
+    "description": "See the lastest news that's tagged with #DesignCraft!",
+    "players": "1 user at a time. Scan your bracelet to begin, and again at anytime if you need to log out.",
+    "numPlay" : 1,
+    "timer" : 4000,
+    "backendurl" : "http://quantifiedselfbackend.local:6060/news_processor?",
+    "baseurl" : "http://localhost:7070?"
+}

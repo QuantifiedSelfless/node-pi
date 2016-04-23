@@ -1,4 +1,7 @@
+#!/bin/bash
+
 # ripped out of /usr/bin/raspi-config
+# ----
 if command -v systemctl > /dev/null && systemctl | grep -q '\-\.mount'; then
     SYSTEMD=1
 elif [ -f /etc/init.d/cron ] && [ ! -h /etc/init.d/cron ]; then
@@ -12,6 +15,7 @@ else
     update-rc.d lightdm enable 2
 fi
 sed /etc/lightdm/lightdm.conf -i -e "s/^#autologin-user=.*/autologin-user=pi/"
+# ----
 
 cp static/img/background.png /usr/share/backgrounds/background.jpg
 cat > /usr/share/gnome-background-properties/debian.xml <<- EOM
@@ -28,6 +32,10 @@ cat > /usr/share/gnome-background-properties/debian.xml <<- EOM
    </wallpaper>
 </wallpapers>
 EOM
+
+config=/home/pi/.config/lxpanel/LXDE-pi/panels/panel
+sed -i 's/autohide=0/autohide=1/' $config
+sed -i 's/heightwhenhidden=2/heightwhenhidden=0/' $config
 
 cat >> /etc/X11/xinit/xinitrc <<- EOM
 xset -dpms

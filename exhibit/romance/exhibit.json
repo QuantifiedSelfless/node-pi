@@ -1,0 +1,10 @@
+{
+    "title" : "Meet Your Match",
+    "description" : "This Companion helps two people find out how compatible they are! When two of you sign in, you will take turns answering a series of questions about what is important to you in your love life and about how compatible you are given your values! This game has been known to cause wedding bells to ring and beds to rock!",
+    "players" :  "2 lovebirds are required to begin this Companion. Scan your BioBracelet to start, and tap it again anytime if you need to end early. The game will load automatically a few moments after the two of you scan in.",
+    "numPlay" : 2,
+    "timer"   : 4000,
+    "backendurl" : "http://quantifiedselfbackend.local:6060/romance_processor?",
+    "baseurl" : "http://romance.local:7070"
+
+}

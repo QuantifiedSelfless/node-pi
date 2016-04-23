@@ -1,0 +1,9 @@
+{
+    "title" : "You and Your Libido",
+    "description": "This is our steamiest DesignCraft Companion. We provide you with sultry images taken from the wide world of pornography and you have the opportunity to tell us which ones fire you up the most. Press the left button to tell us the image isn't what you're into, and press the right button to tell us you're getting fired up. When you're done we'll use our algorithms to help you find out who in your personal life has the potential to rev you up!",
+    "players": "1 user at a time. Scan your BioBracelet to begin, and again at anytime if you need to log out.",
+    "numPlay" : 1,
+    "timer" : 4000,
+    "backendurl" : "http://quantifiedselfbackend.local:6060/pr0n_processor?",
+    "baseurl" : "http://localhost:7070?"
+}

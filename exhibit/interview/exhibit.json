@@ -1,0 +1,9 @@
+{
+    "title" : "Need not Apply",
+    "description": "You have all the qualifications we're loooking for! Now it's time to see what you're all about. I mean, we already know what you're all about, but we'll be asking you about it anyway.",
+    "players": "Only 1 applicant at a time. Scan your bracelet so we can begin! Scan it again if you aren't feeling up to it.",
+    "numPlay" : 1,
+    "timer" : 4000,
+    "backendurl" : "http://quantifiedselfbackend.local:6060/interview_processor?",
+    "baseurl" : "http://localhost:7070?"
+}
