@@ -71,7 +71,10 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     type: 'GET',
     url: url,
     success: function(resp) {
-      console.log(resp);
+      if (!resp.data[0].permission) {
+        badPlayer();
+        return;
+      }
       name = resp.data[0].name|| "User";
       addCard(name, data.rfid);
       players.push(data.rfid);
