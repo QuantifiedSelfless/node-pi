@@ -5,5 +5,6 @@
     "numPlay" : 1,
     "timer" : 4000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/tos_processor?",
-    "baseurl" : "http://localhost:7070?"
+    "baseurl" : "http://localhost:7070?",
+    "git" : "https://github.com/QuantifiedSelfless/TermsOfService-Game.git"
 }

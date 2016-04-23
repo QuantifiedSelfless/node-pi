@@ -5,5 +5,6 @@
     "numPlay" : 1,
     "timer" : 4000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/pr0n_processor?",
-    "baseurl" : "http://localhost:7070?"
+    "baseurl" : "http://localhost:7070?",
+    "git" : "https://github.com/QuantifiedSelfless/pr0n.git"
 }
