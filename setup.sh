@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "Installing SSH Keys..."
-./install_ssh_keys.sh
 
-echo "Setting up network and mDNS: "
-sudo ./setup_network.sh
+for i in $( ls scripts/ ); do
+    echo "Running setup: $i"
+    ./scripts/$i
+done
