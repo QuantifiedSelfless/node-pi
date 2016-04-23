@@ -2,7 +2,8 @@
 var debug = false;
 var userids = false;
 
-var numPlayers;
+var maxPlayers;
+var minPlayers;
 var redirectionTimer;
 var backendurl = 'quantifiedselfbackend.local';
 var startTimer;
@@ -15,8 +16,9 @@ $.getJSON("static/data/exhibit.json", function (data) {
   $('#exdetails').text(data.description);
   $('#explay').text(data.players);
   redirectionTimer = data.timer || 5000;
-  numPlayers = data.numPlay
-    backendurl = data.backendurl || backendurl;
+  minPlayers = data.min_players || 1;
+  maxPlayers = data.max_players || 1;;
+  backendurl = data.backendurl || backendurl;
   baseurl = data.baseurl || baseurl;
 }).done(function (data) {
   console.log("all done");
@@ -26,12 +28,12 @@ $.getJSON("static/data/exhibit.json", function (data) {
 });
 
 function runGame () {
-
-  if (numPlayers == 1 && userids == true) {
+  var playerCount = players.length;
+  if (playerCount == 1 && userids == true) {
     baseurl += "userid=" + players[0] + "&";
-  } else if ( numPlayers == 1 && debug == false) {
+  } else if ( playerCount == 1 && debug == false) {
     baseurl += "rfid=" + players[0] + "&";
-  } else if ( numPlayers > 1 && userids == true) {
+  } else if ( playerCount > 1 && userids == true) {
     for (play in players){
       baseurl += "userid" + play + "=" + players[play] + "&";
     }
@@ -78,7 +80,9 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       name = resp.data[0].name|| "User";
       addCard(name, data.rfid);
       players.push(data.rfid);
-      startTimer = setTimeout(runGame, redirectionTimer);
+      if (players.length >= minPlayers) {
+        startTimer = setTimeout(runGame, redirectionTimer);
+      }
       return true;
     },
     error: function(resp) {
@@ -109,7 +113,7 @@ function removeUser(playerIndex, data) {
       var name = response.data[0].name || "User";
       removeCard(data.user_id);
       players.splice(playerIndex, 1);
-      if (players.length < 1) {
+      if (players.length < minPlayers) {
         clearTimeout(startTimer);
       } else {
         startTimer = setTimeout(runGame, redirectionTimer);       
@@ -152,7 +156,7 @@ $(document).ready(function () {
       //toastr.error('You are already logged in to this DesignCraft Companion', {positionClass: "toast-top-full-width"});
       return;
     }
-    if (players.length == numPlayers) {
+    if (players.length + 1 > maxPlayers) {
       toastr.error('You are trying to sign in too many users to this Companion. Wait your turn!', {positionClass: "toast-top-full-width"});
       return;
     }
