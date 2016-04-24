@@ -22,5 +22,5 @@ sudo -u pi bash -c "
   xset -dpms
   xset s off
   xset s noblank
-  chromium-browser --incognito --kiosk http://localhost:8000/ &> ${PWD}/chrome.log &
+  chromium-browser --no-first-run --incognito --kiosk http://localhost:8000/ &> ${PWD}/chrome.log &
 "

@@ -75,6 +75,8 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
   $.ajax({
     type: 'GET',
     url: url,
+    cache: false,
+    timeout: 1000,
     success: function(resp) {
       if (!resp.data[0].permission) {
         badPlayer();
