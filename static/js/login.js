@@ -90,6 +90,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       }
     },
     error: function(resp) {
+      console.log(resp)
       if (resp.statusCode == 403) {
         badPlayer();
         return;
