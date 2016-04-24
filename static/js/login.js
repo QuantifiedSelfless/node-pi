@@ -75,6 +75,8 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
   $.ajax({
     type: 'GET',
     url: url,
+    cache: false,
+    timeout: 10000,
     success: function(resp) {
       if (!resp.data[0].permission) {
         badPlayer();
@@ -86,9 +88,9 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
       }
-      return true;
     },
     error: function(resp) {
+      console.log(resp)
       if (resp.statusCode == 403) {
         badPlayer();
         return;
@@ -172,10 +174,10 @@ $(document).ready(function () {
     } else if (debug == true && userids == true) {
       //Need to hard code a userid for testing
       good_url = backendurl + "userid=" + userid;
-      permission = make_AJAX_call(good_url, {"userid": userid}, 0, 3);
+      make_AJAX_call(good_url, {"userid": userid}, 0, 3);
     } else {
       good_url = backendurl + "rfid=" + userid;
-      permission = make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
+      make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
     }
   });
 
