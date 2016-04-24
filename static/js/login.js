@@ -17,10 +17,10 @@ $.getJSON("static/data/exhibit.json", function (data) {
   $('#explay').text(data.players);
   redirectionTimer = data.timer || 5000;
   minPlayers = data.min_players || 1;
-  maxPlayers = data.max_players || 1;;
+  maxPlayers = data.max_players || 1;
   backendurl = data.backendurl || backendurl;
   baseurl = data.baseurl || baseurl;
-  if (minPlayers == maxPlayers == 0) {
+  if (maxPlayers == -1) {
     runGame();
   }
 }).done(function (data) {
