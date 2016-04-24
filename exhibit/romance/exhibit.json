@@ -6,5 +6,7 @@
     "timer"   : 4000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/romance_processor?",
     "baseurl" : "http://romance.local:7070",
+    "min_players" : 2,
+    "max_players" : 2,
     "git" : "https://github.com/QuantifiedSelfless/Romance-Game.git"
 }

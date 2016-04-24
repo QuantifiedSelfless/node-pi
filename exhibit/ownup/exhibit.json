@@ -6,5 +6,7 @@
     "timer" : 8000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/ownup?",
     "baseurl" : "http://localhost:7070?",
+    "min_players" : 2,
+    "max_players" : 4,
     "git": "https://github.com/QuantifiedSelfless/OwnUp.git"
 }

@@ -6,5 +6,7 @@
     "timer" : 4000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/news_processor?",
     "baseurl" : "http://localhost:7070?",
+    "min_players" : 1,
+    "max_players" : 1,
     "git" : "https://github.com/QuantifiedSelfless/qs-personalized-news.git"
 }
