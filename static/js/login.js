@@ -76,7 +76,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     type: 'GET',
     url: url,
     cache: false,
-    timeout: 5000,
+    timeout: 10000,
     success: function(resp) {
       if (!resp.data[0].permission) {
         badPlayer();
@@ -101,7 +101,6 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         return;
       }
       else { //Try again with exponential backoff.
-        toastr.error('Retrying permissions check', 'Error', {positionClass: "toast-top-full-width"});
         setTimeout(function(){ 
           return make_AJAX_call(url, data, tryCount, retryLimit);
         }, Math.pow(2, tryCount) * 1000);
