@@ -7,5 +7,6 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/8TxJIysSWG0/5wIFteSXTvVrEU30Ntt47OpfzjWH
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDS5bcfpJOcswH5Ky0KcsFW4rLf6o1hNMFS9XY+qD2dWIBduOEjzqzEylpjDUMfN6bWiRBClWVKibJJK0lxZNi8oJzUCGZfsPiEPWMKJFdyHsZjojTXScC+vFG35nRldovkdLc2mwAspBi4BEOEkTTXC77YLoTMscdJXHwJa66wabZbD9H1Ov2FNx45mkNBE25m33RLUbRfL/Fdu2cpcBAJMOe/245vfXC1jOpHl1/6xZ23WMssf5rKmBVWqLsSmFDIougHctRtsp84+fqYQgY19vhGw+b5GmGO9eifZSyMQDti5VBIl9WpluBZwKy/cjMihgWB1qeBYzpvKupIYKl micha@electron
 EOM
 
+chown -R pi:pi /home/pi/.ssh
 chmod 700 /home/pi/.ssh
 chmod 600 /home/pi/.ssh/authorized_keys
