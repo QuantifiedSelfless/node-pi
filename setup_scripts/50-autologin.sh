@@ -38,8 +38,13 @@ config=/home/pi/.config/lxpanel/LXDE-pi/panels/panel
 sed -i 's/autohide=0/autohide=1/' $config
 sed -i 's/heightwhenhidden=2/heightwhenhidden=0/' $config
 
-cat >> /etc/X11/xinit/xinitrc <<- EOM
-xset -dpms
-xset s off
-xset s noblank
+mkdir -p /home/pi/.config/autostart
+if [ ! -e ~pi/.config/autostart/exhibit.desktop ]; then
+  cat > ~pi/.config/autostart/exhibit.desktop <<- EOM
+[Desktop Entry] 
+Type=Application
+Exec=$PWD/run_exhibit.sh
 EOM
+fi
+chown -R pi:pi /home/pi/.config/autostart
+

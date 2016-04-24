@@ -18,4 +18,9 @@ done;
 
 export DISPLAY=:0.0
 pkill chromium
-sudo -u pi chromium-browser --kiosk http://localhost:8000/ &>/var/log/chrome.log &
+sudo -u pi bash -c "
+  xset -dpms
+  xset s off
+  xset s noblank
+  chromium-browser --incognito --kiosk http://localhost:8000/ &>/var/log/chrome.log &
+"
