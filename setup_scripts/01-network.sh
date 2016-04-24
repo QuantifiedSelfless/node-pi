@@ -1,6 +1,5 @@
 #!/bin/bash
-echo -n "Enter new hostname: "
-read hostname
+hostname=$1
 echo $hostname > /proc/sys/kernel/hostname
 sed -i 's/127.0.1.1.*/127.0.1.1\t'"$hostname"'/g' /etc/hosts
 echo $hostname > /etc/hostname

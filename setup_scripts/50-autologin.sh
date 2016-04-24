@@ -17,6 +17,7 @@ fi
 sed /etc/lightdm/lightdm.conf -i -e "s/^#autologin-user=.*/autologin-user=pi/"
 # ----
 
+mkdir -p /usr/share/backgrounds/
 cp static/img/background.png /usr/share/backgrounds/background.jpg
 cat > /usr/share/gnome-background-properties/debian.xml <<- EOM
 <?xml version="1.0" encoding="UTF-8"?>
