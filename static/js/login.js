@@ -20,6 +20,9 @@ $.getJSON("static/data/exhibit.json", function (data) {
   maxPlayers = data.max_players || 1;;
   backendurl = data.backendurl || backendurl;
   baseurl = data.baseurl || baseurl;
+  if (minPlayers == maxPlayers == 0) {
+    runGame();
+  }
 }).done(function (data) {
   console.log("all done");
   console.log(data);
@@ -38,7 +41,7 @@ function runGame () {
       baseurl += "userid" + play + "=" + players[play] + "&";
     }
   } else {
-    for (play in players){
+    for (play in players) {
       baseurl += "rfid" + play + "=" + players[play] + "&";
     }
   }
@@ -165,7 +168,7 @@ $(document).ready(function () {
     userid = data.user_id;
     if (debug == true && userids == false) {
       addCard("Test Dude", "000000");
-      setTimeout(runGame, redirectionTimer); 
+      setTimeout(runGame, uedirectionTimer); 
     } else if (debug == true && userids == true) {
       //Need to hard code a userid for testing
       good_url = backendurl + "userid=" + userid;
