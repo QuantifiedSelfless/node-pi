@@ -11,24 +11,11 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd $DIR
 
 screen -d -m -S exhibit
-screen -S exhibit -p 0 -X exhibit bash -c "cd ~/exhibit/ ; ./run.sh"
-i=1
-for script in ls $( ls run_scripts ); do
-    screen -S mysession -X $script $i
-    screen -S mysession -p $i -X bash ./run_scripts/$script
-    i=$(( $i + 1 ))
+for script in $( ls run_scripts ); do
+  echo "Starting: ${script}"
+  screen -S exhibit -X screen bash ./run_scripts/$script
 done;
 
-screen -S mysession -X screen 2
-screen -S mysession -p 1 -X login python3 -m http.server 8000
-
-export DISPLAY=:0
-pid=$(ps aux | grep chromium-browser | grep -v "grep" | cut -d " " -f9)
-chromium-browser --kiosk http://localhost:8000/ &>/var/log/chrome.log &
-if [[ -z $pid ]]
-   then
-      echo "Chrome wasn't running"
-   else
-      kill $pid
-fi
-echo DONE
+export DISPLAY=:0.0
+pkill chromium
+sudo -u pi chromium-browser --kiosk http://localhost:8000/ &>/var/log/chrome.log &
