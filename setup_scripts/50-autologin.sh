@@ -43,6 +43,7 @@ mkdir -p /home/pi/.config/autostart
 if [ ! -e ~pi/.config/autostart/exhibit.desktop ]; then
   cat > ~pi/.config/autostart/exhibit.desktop <<- EOM
 [Desktop Entry] 
+Name=Exhibit
 Type=Application
 Exec=$PWD/run_exhibit.sh
 EOM
