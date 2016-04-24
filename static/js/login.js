@@ -76,7 +76,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     type: 'GET',
     url: url,
     cache: false,
-    timeout: 1000,
+    timeout: 5000,
     success: function(resp) {
       if (!resp.data[0].permission) {
         badPlayer();
@@ -88,7 +88,6 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
       }
-      return true;
     },
     error: function(resp) {
       if (resp.statusCode == 403) {
@@ -101,6 +100,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         return;
       }
       else { //Try again with exponential backoff.
+        toastr.error('Retrying permissions check', 'Error', {positionClass: "toast-top-full-width"});
         setTimeout(function(){ 
           return make_AJAX_call(url, data, tryCount, retryLimit);
         }, Math.pow(2, tryCount) * 1000);
@@ -174,10 +174,10 @@ $(document).ready(function () {
     } else if (debug == true && userids == true) {
       //Need to hard code a userid for testing
       good_url = backendurl + "userid=" + userid;
-      permission = make_AJAX_call(good_url, {"userid": userid}, 0, 3);
+      make_AJAX_call(good_url, {"userid": userid}, 0, 3);
     } else {
       good_url = backendurl + "rfid=" + userid;
-      permission = make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
+      make_AJAX_call(good_url, {"rfid": userid}, 0, 3);
     }
   });
 
