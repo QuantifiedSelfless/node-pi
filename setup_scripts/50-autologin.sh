@@ -17,22 +17,23 @@ fi
 sed /etc/lightdm/lightdm.conf -i -e "s/^#autologin-user=.*/autologin-user=pi/"
 # ----
 
-mkdir -p /usr/share/backgrounds/
-cp static/img/background.png /usr/share/backgrounds/background.jpg
-cat > /usr/share/gnome-background-properties/debian.xml <<- EOM
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
-<wallpapers>
-   <wallpaper>
-    <name>Custom_Back1</name>
-    <filename>/usr/share/backgrounds/background.jpg</filename>
-    <options>center</options>
-    <pcolor>#000000</pcolor>
-    <scolor>#000000</scolor>
-    <shade_type>solid</shade_type>
-   </wallpaper>
-</wallpapers>
+mkdir -p /home/pi/.config/pcmanfm/LXDE-pi/
+cat > /home/pi/.config/pcmanfm/LXDE-pi/desktop-items-0.conf <<- EOM
+[*]
+wallpaper_mode=center
+wallpaper_common=1
+wallpaper=${PWD}/static/img/background.png
+desktop_bg=#000000
+desktop_fg=#000000
+desktop_shadow=#d6d3de
+desktop_font=Roboto Light 12
+show_wm_menu=0
+sort=mtime;ascending;
+show_documents=0
+show_trash=0
+show_mounts=0
 EOM
+chown -R pi:pi /home/pi/.config/
 
 config=/home/pi/.config/lxpanel/LXDE-pi/panels/panel
 sed -i 's/autohide=0/autohide=1/' $config
