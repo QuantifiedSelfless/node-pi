@@ -35,18 +35,18 @@ function badPlayer() {
     toastr.error('This user is unauthorized to use this companion. Please consider sharing more with DesignCraft for a better experience.', 'User Not Allowed', {positionClass: "toast-top-full-width"});
 }
 
-function addCard(name) {
-    elem = "<div class='card flex-auto'>\
-                <header class='card-head'>\
-                  <h3>" + name + "</h3>\
-                </header>\
-                <div class='conf flex flex-center'>\
-                  <img src='/static/img/Yellow-Tree-logo.png'\
-                  class='flex-auto' style='width: 5%'>\
-                  <p class='flex-auto'>Connected</p>\
-                </div>\
-            </div>";
-    $('#login').append(elem);
+function addCard(name, rfid) {
+  elem = "<div id='card-" + rfid.slice(0, -1) + "' class='card flex-auto'>\
+          <header class='card-head'>\
+          <h3>" + name + "</h3>\
+          </header>\
+          <div class='conf flex flex-center'>\
+          <img src='/static/img/Yellow-Tree-logo.png'\
+          class='flex-auto' style='width: 5%'>\
+          <p class='flex-auto'>Connected</p>\
+          </div>\
+          </div>";
+  $('#login').append(elem);
 }
 
 function addWaitingCard() {
@@ -82,7 +82,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
             console.log(resp);
             name = resp.data[0].name|| "User";
             removeWaitingCard();
-            addCard(name);
+            addCard(name, data.rfid);
             players.push(data.rfid);
             if (players.length == 2) {
                 startTimer = setTimeout( runGame, redirectionTimer);
