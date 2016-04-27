@@ -15,7 +15,8 @@ $.getJSON("static/data/exhibit.json", function (data) {
     $('#exdetails').text(data.description);
     $('#explay').text(data.players);
     redirectionTimer = data.timer || 5000;
-    numPlayers = data.numPlay
+    minPlayers = data.min_players || 2;
+    maxPlayers = data.max_players || 2;
     backendurl = data.backendurl || backendurl;
     baseurl = data.baseurl || baseurl;
 }).done(function (data) {
@@ -164,7 +165,7 @@ $(document).ready(function () {
           //toastr.error('You are already logged in to this DesignCraft Companion', {positionClass: "toast-top-full-width"});
           return;
         }
-        if (players.length == numPlayers) {
+        if (players.length == maxPlayers) {
             toastr.error('You are trying to sign in too many users to this Companion. Wait your turn!', {positionClass: "toast-top-full-width"});
             return;
         }
