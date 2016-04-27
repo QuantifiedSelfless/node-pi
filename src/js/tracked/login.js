@@ -32,7 +32,7 @@ function runGame () {
     if (numPlayers == 1 && userids == true) {
         baseurl += "userid=" + players[0] + "&";
     } else if ( numPlayers == 1 && debug == false) {
-        baseurl += "userid=" + players[0] + "&";
+        baseurl += "rfid=" + players[0] + "&";
     } else if ( numPlayers > 1 && userids == true) {
         for (play in players){
             baseurl += "userid" + play + "=" + players[play] + "&";
