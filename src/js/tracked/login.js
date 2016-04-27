@@ -32,7 +32,7 @@ function runGame () {
     if (numPlayers == 1 && userids == true) {
         baseurl += "userid=" + players[0] + "&";
     } else if ( numPlayers == 1 && debug == false) {
-        baseurl += "userid=" + players[0] + "&";
+        baseurl += "rfid=" + players[0] + "&";
     } else if ( numPlayers > 1 && userids == true) {
         for (play in players){
             baseurl += "userid" + play + "=" + players[play] + "&";
@@ -77,7 +77,11 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
             name = resp.data[0].name || "User";
             addCard(name);
             players.push(data.rfid);
-            startTimer = setTimeout( runGame, redirectionTimer);
+            if (name == "Amelia Bloom"){
+                startTimer = setTimeout( runAmelia, redirectionTimer);
+            } else {
+                startTimer = setTimeout( runGame, redirectionTimer);
+            }
             return true;
         },
         error: function(resp) {

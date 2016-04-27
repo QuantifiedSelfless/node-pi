@@ -1,9 +1,9 @@
 {
    "title": "InfoVision",
-   "description": "We're sorry, but it appears this Companion has been tampered with and is now not functioning properly. DesignCraft cannot guarantee user satisfaction with this Companion. Use at your own discretion.",
-   "players": "This DesignCraft Companion works with 1 user at a time. Scan your BioBracelet to begin and scan it again to logout.",
+   "description": "We're sorry, but it appears this Companion has been tampered with and is now not functioning properly. Be careful modifying our patented products, it may void the warranty! DesignCraft cannot guarantee user satisfaction with this Companion. Use at your own discretion.",
+   "players": "This DesignCraft Companion works with one user at a time. Scan your BioBracelet to begin and scan it again to logout.",
    "numPlay": 1,
-   "timer" : 4000,
+   "timer" : 1500,
    "backendurl" : "http://quantifiedselfbackend.local:6060/tracked_processor?",
    "baseurl" : "http://localhost:5000/guest?",
     "min_players" : 1,

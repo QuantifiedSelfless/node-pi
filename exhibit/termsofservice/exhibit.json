@@ -3,7 +3,7 @@
     "description": "This DesignCraft Companion takes you somewhere no one else can -- deep into your unconscious fantasies. You'll have the rare opportunity to explore what drives you, what turns you on, and if you can make it all the way though, what you really want out of life. ",
     "players": "1 user at a time. Scan your bracelet to begin, and again at anytime if you need to log out.",
     "numPlay" : 1,
-    "timer" : 4000,
+    "timer" : 1500,
     "backendurl" : "http://quantifiedselfbackend.local:6060/tos_processor?",
     "baseurl" : "http://localhost:7070?",
     "min_players" : 1,

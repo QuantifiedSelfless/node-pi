@@ -1,7 +1,7 @@
 {
     "title" : "Interpret the Truth",
-    "description": "Whoever plays this Companion will be shown 'facts' about themselves or the world we live in. Your job is to decide if what you're being shown is true or false. Use the left button to choose true and the right to choose false. How susceptible are you to fake facts?",
-    "players": "This game supports 1 or 2 players. Scan your BioBracelet to begin and again anytime to logout.",
+    "description": "Whoever plays this Companion will be shown 'facts' about themselves or the world we live in. Your job is to decide if what you're being shown is true or false. Use the left button to choose true and the right to choose false. How susceptible are you to fake facts? Player one plays on the left. Player two on the right. Use the green button for True and the red for False.",
+    "players": "This game supports one or two players. Scan your BioBracelet to begin and again anytime to logout.",
     "numPlay" : 2,
     "timer" : 7000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/truth_processor?",

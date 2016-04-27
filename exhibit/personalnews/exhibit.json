@@ -1,9 +1,9 @@
 {
     "title" : "In the News",
-    "description": "See the lastest news that's tagged with #DesignCraft!",
-    "players": "1 user at a time. Scan your bracelet to begin, and again at anytime if you need to log out.",
+    "description": "Don't you hate spending all the time crawling around the internet for the news you need to stay informed. This DesignCraft Companion simplifies the process for you. We pick stories especially for you. Time to sit back and read up.",
+    "players": "One user at a time. Scan your bracelet to get an article, and again anytime you need to log out.",
     "numPlay" : 1,
-    "timer" : 4000,
+    "timer" : 1500,
     "backendurl" : "http://quantifiedselfbackend.local:6060/news_processor?",
     "baseurl" : "http://localhost:7070?",
     "min_players" : 1,
