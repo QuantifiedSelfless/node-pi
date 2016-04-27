@@ -2,7 +2,7 @@
     "title" : "Amelia's Mirror",
     "description": "This Amelia's mirror game.",
     "players": "",
-    "timer" : 4000,
+    "timer" : 500,
     "backendurl" : "http://quantifiedselfbackend.local:6060/mirror?",
     "baseurl" : "http://localhost:7070?",
     "min_players" : -1,

@@ -3,7 +3,7 @@
     "description": "DesignCraft wants to help you get to know yourself and be at ease. In this Companion, you get the chance to analyze your personal happiness, keep track of your behaviors, and reflect on things you've recently said that may be affecting your emotions. So sit back, relax, and remember, be honest with yourself.",
     "players": "Only 1 person at a time, please. Scan your BioBracelet to begin, and again if you need to log out early.",
     "numPlay" : 1,
-    "timer" : 4000,
+    "timer" : 1500,
     "backendurl" : "http://quantifiedselfbackend.local:6060/mental_health?",
     "baseurl" : "http://localhost:7070?",
     "min_players" : 1,
