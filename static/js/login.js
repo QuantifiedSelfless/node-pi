@@ -69,7 +69,7 @@ function addCard(name, rfid) {
 
 function addWaitingCard() {
 
-  var waiting_text = "Another Players?";
+  var waiting_text = "Another Player?";
   if (players.length < maxPlayers && players.length >= minPlayers) {
     waiting_text = "Waiting " + redirectionTimer + "seconds";
   }
