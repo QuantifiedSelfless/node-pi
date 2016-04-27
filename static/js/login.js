@@ -67,6 +67,29 @@ function addCard(name, rfid) {
   $('#login').append(elem);
 }
 
+function addWaitingCard() {
+
+  var waiting_text = "Another Players?";
+  if (players.length < maxPlayers && players.length >= minPlayers) {
+    waiting_text = "Waiting " + redirectionTimer + "seconds";
+  }
+  elem = "<div id='card-waiting' class='card flex-auto'>\
+          <header class='card-head'>\
+          <h3>" + waiting_text + "</h3>\
+          </header>\
+          <div class='conf flex flex-center'>\
+          <img src='/static/img/Yellow-Tree-logo.png'\
+          class='flex-auto' style='width: 5%'>\
+          <p class='flex-auto'>Waiting</p>\
+          </div>\
+          </div>";
+  $('#login').append(elem);
+}
+
+function removeWaitingCard() {
+  $('#card-waiting').remove();
+}
+
 function removeCard(rfid) {
   $('#card-' + rfid.slice(0, -1)).remove();
 }
@@ -82,11 +105,15 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         badPlayer();
         return;
       }
+      removeWaitingCard();
       name = resp.data[0].name|| "User";
       addCard(name, data.rfid);
       players.push(data.rfid);
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
+      } 
+      if (minPlayers > 1 && players.length < maxPlayers){
+        addWaitingCard();
       }
     },
     error: function(resp) {

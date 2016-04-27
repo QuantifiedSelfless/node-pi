@@ -48,6 +48,31 @@ function addCard(name) {
     $('#login').append(elem);
 }
 
+function addWaitingCard() {
+
+  var waiting_text = "Another Lover?";
+
+  elem = "<div id='card-waiting' class='card flex-auto'>\
+          <header class='card-head'>\
+          <h3>" + waiting_text + "</h3>\
+          </header>\
+          <div class='conf flex flex-center'>\
+          <img src='/static/img/Yellow-Tree-logo.png'\
+          class='flex-auto' style='width: 5%'>\
+          <p class='flex-auto'>Waiting</p>\
+          </div>\
+          </div>";
+  $('#login').append(elem);
+}
+
+function removeWaitingCard() {
+  $('#card-waiting').remove();
+}
+
+function removeCard(rfid) {
+  $('#card-' + rfid.slice(0, -1)).remove();
+}
+
 function make_AJAX_call(url, data, tryCount, retryLimit){
     $.ajax({
         type: 'GET',
@@ -55,10 +80,13 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         success: function(resp) {
             console.log(resp);
             name = resp.data[0].name|| "User";
+            removeWaitingCard();
             addCard(name);
             players.push(data.rfid);
             if (players.length == 2) {
                 startTimer = setTimeout( runGame, redirectionTimer);
+            } else if (players.length < 2) {
+                addWaitingCard();
             }
             return true;
         },
@@ -80,6 +108,27 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
             }
         }
     });
+}
+
+function removeUser(playerIndex, data) {
+  $.ajax({
+    type: 'GET',
+    url: backendurl + 'rfid=' + data.user_id,
+    success: function (response) {
+      var name = response.data[0].name || "User";
+      removeCard(data.user_id);
+      players.splice(playerIndex, 1);
+      if (players.length < minPlayers) {
+        clearTimeout(startTimer);
+      } else {
+        startTimer = setTimeout(runGame, redirectionTimer);       
+      }
+    },
+    error: function (err) {
+      toastr.error("Something went wrong on DesignCraft's servers. You can no longer log out.", {positionClass: "toast-top-full-width"})
+      console.error(err);
+    }
+  });
 }
 
 function getURLParams() {
@@ -107,10 +156,10 @@ $(document).ready(function () {
     }
     
     socket.on('rfid', function (data) {
-        if (players.indexOf(data.user_id) != -1){
-            toastr.error('You are already logged in to this DesignCraft Companion', {positionClass: "toast-top-full-width"});
-            return;
-
+        if ((index = players.indexOf(data.user_id)) != -1) {
+          removeUser(index, data);
+          //toastr.error('You are already logged in to this DesignCraft Companion', {positionClass: "toast-top-full-width"});
+          return;
         }
         if (players.length == numPlayers) {
             toastr.error('You are trying to sign in too many users to this Companion. Wait your turn!', {positionClass: "toast-top-full-width"});
