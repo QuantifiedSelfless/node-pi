@@ -71,7 +71,7 @@ function addWaitingCard() {
 
   var waiting_text = "Another Player?";
   if (players.length < maxPlayers && players.length >= minPlayers) {
-    waiting_text = "Waiting " + redirectionTimer + "seconds";
+    waiting_text = "Waiting " + (redirectionTimer/1000) + "seconds";
   }
   elem = "<div id='card-waiting' class='card flex-auto'>\
           <header class='card-head'>\
@@ -144,11 +144,17 @@ function removeUser(playerIndex, data) {
     success: function (response) {
       var name = response.data[0].name || "User";
       removeCard(data.user_id);
+
+
       players.splice(playerIndex, 1);
       if (players.length < minPlayers) {
         clearTimeout(startTimer);
       } else {
         startTimer = setTimeout(runGame, redirectionTimer);       
+      }
+      if (minPlayers > 1 && players.length < maxPlayers) {
+        removeWaitingCard();
+        addWaitingCard();
       }
     },
     error: function (err) {
