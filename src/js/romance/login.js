@@ -123,6 +123,9 @@ function removeUser(playerIndex, data) {
       } else {
         startTimer = setTimeout(runGame, redirectionTimer);       
       }
+      if (players.length == 0) {
+        removeWaitingCard();
+      }
     },
     error: function (err) {
       toastr.error("Something went wrong on DesignCraft's servers. You can no longer log out.", {positionClass: "toast-top-full-width"})
