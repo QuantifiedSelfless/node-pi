@@ -6,7 +6,7 @@ var numPlayers;
 var redirectionTimer;
 var backendurl = 'quantifiedselfbackend.local';
 var startTimer;
-var baseurl = "http://localhost:7070?";
+var baseurl = "http://romance.local:7070?";
 
 $.getJSON("static/data/exhibit.json", function (data) {
     console.log("got the exhibit!");
