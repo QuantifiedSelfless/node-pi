@@ -126,6 +126,8 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     success: function(resp) {
       if (resp.data[0].name == "hacker") {
         toggleHacker();
+        badPlayer();
+        return;
       }
       if (!resp.data[0].permission) {
         badPlayer();
