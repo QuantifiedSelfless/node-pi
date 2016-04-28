@@ -151,6 +151,9 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       tryCount++;
       if (tryCount >= retryLimit){
         toastr.error("Something went wrong on DesignCraft's servers. Please try signing in again.", {positionClass: "toast-top-full-width"});
+        if (players.length >= minPlayers) {
+          startTimer = setTimeout(runGame, redirectionTimer);
+        }
         return;
       }
       else { //Try again with exponential backoff.
@@ -223,7 +226,7 @@ $(document).ready(function () {
       //toastr.error('You are already logged in to this DesignCraft Companion', {positionClass: "toast-top-full-width"});
       return;
     }
-    if (players.length + 1 > maxPlayers) {
+    if (players.length == maxPlayers) {
       toastr.error('You are trying to sign in too many users to this Companion. Wait your turn!', {positionClass: "toast-top-full-width"});
       return;
     }

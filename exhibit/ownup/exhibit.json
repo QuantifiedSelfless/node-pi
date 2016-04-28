@@ -1,9 +1,9 @@
 {
     "title" : "Own Up!",
-    "description": "We all say things we regret, but will you own up to the things you've said online? When you see a quote appear, press your button if it's yours! Or don't... but then it might turn into a blame game!",
+    "description": "We all say things we regret, but will you own up to the things you've said online? Each of you will see the same quote appear on a card in front of you. If you said the quote, press the button to own up to it. Or don't... but then it might turn into a blame game!",
     "players": "Two to four users at a time. Scan your BioBracelets to join in. If you chicken out partway through, scan again, but it'll end it for everyone!",
     "numPlay" : 4,
-    "timer" : 8000,
+    "timer" : 7000,
     "backendurl" : "http://quantifiedselfbackend.local:6060/ownup?",
     "baseurl" : "http://localhost:7070?",
     "min_players" : 2,
