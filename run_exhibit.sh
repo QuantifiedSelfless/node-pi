@@ -19,8 +19,10 @@ done;
 export DISPLAY=:0.0
 pkill chromium
 sudo -u pi bash -c "
+  export DISPLAY=':0.0'
   xset -dpms
   xset s off
   xset s noblank
+  xdotool mousemove 5000 5000
   chromium-browser --no-first-run --incognito --kiosk http://localhost:8000/ &> ${PWD}/chrome.log &
 "
