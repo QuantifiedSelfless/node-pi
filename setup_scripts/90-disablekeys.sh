@@ -1,65 +1,22 @@
 #!/bin/bash
 
+disable_keys=(
+    '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '95' '96' # F keys
+    '64' '108' '205' '133' '134' '206' '37' '105' '64' '108' '204' # meta chars
+    '180' '163' '223' '121' '198' '148' # media keys
+    '107' '78' '127' '118' '110' '112' '119' '115' '117' '77' # middle board keys
+)
 cat > /home/pi/.xmodmap <<- EOM
-keycode  67 = 0x0000
-! F1
-keycode  68 = 0x0000
-! F2
-keycode  69 = 0x0000
-! F3
-keycode  70 = 0x0000
-! F4
-keycode  71 = 0x0000
-! F5
-keycode  72 = 0x0000
-! F6
-keycode  73 = 0x0000
-! F7
-keycode  74 = 0x0000
-! F8
-keycode  75 = 0x0000
-! F9
-keycode  76 = 0x0000
-! F10
-keycode  95 = 0x0000
-! F11
-keycode  96 = 0x0000
-! F12
-keycode  64 = 0x0000
-! Alt_L Meta_L Alt_L Meta_L
-keycode 108 = 0x0000
-! Alt_R Meta_R Alt_R Meta_R
-keycode 205 = 0x0000
-! NoSymbol Meta_L NoSymbol Meta_L
-keycode 133 = 0x0000
-! Super_L NoSymbol Super_L
-keycode 134 = 0x0000
-! Super_R NoSymbol Super_R
-keycode 206 = 0x0000
-! NoSymbol Super_L NoSymbol Super_L
-keycode  37 = 0x0000
-! Control_L NoSymbol Control_L
-keycode 105 = 0x0000
-! Control_R NoSymbol Control_R
-keycode  64 = 0x0000
-! Alt_L Meta_L Alt_L Meta_L
-keycode 108 = 0x0000
-! Alt_R Meta_R Alt_R Meta_R
-keycode 204 = 0x0000
-! NoSymbol Alt_L NoSymbol Alt_L
-keycode 180 = 0x0000
-! XF86HomePage NoSymbol XF86HomePage
-keycode 163 = 0x0000
-! XF86Mail NoSymbol XF86Mail
-keycode 223 = 0x0000
-! XF86Mail NoSymbol XF86Mail
-keycode 121 = 0x0000
-! XF86AudioMute NoSymbol XF86AudioMute
-keycode 198 = 0x0000
-! XF86AudioMicMute NoSymbol XF86AudioMicMute
-keycode 148 = 0x0000
-! XF86Calculator NoSymbol XF86Calculator
+clear Control
+clear Mod1
+clear Mod2
+clear Mod3
+clear Mod4
+clear Mod5
 EOM
+for key in ${disable_keys[@]}; do
+    echo "keycode $key = 0x0000" >> /home/pi/.xmodmap
+done
 
 cat > ~pi/.config/autostart/keyboard.desktop <<- EOM
 [Desktop Entry] 
