@@ -94,6 +94,29 @@ function removeCard(rfid) {
   $('#card-' + rfid.slice(0, -1)).remove();
 }
 
+function randomString(length) {
+    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+}
+
+function toggleHacker() {
+    var haxor=$("#haxor");
+    haxor.toggle(400, function(){
+        if (haxor.css('display') == 'none') {
+            console.log("Stoping h4x0r");
+            clearInterval(haxortimer);
+        } else {
+            var terminal=$("#terminal");
+            console.log("Starting h4x0r");
+            haxortimer = setInterval(function() {
+                var numChars = Math.round(Math.random() * 10) + 5;
+                terminal.append(randomString(numChars) + " ");
+                terminal.scrollTop(terminal.prop("scrollHeight"));
+            }, 25);
+        }
+    })
+}
+
+var haxortimer;
 function make_AJAX_call(url, data, tryCount, retryLimit){
   $.ajax({
     type: 'GET',
@@ -101,6 +124,9 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     cache: false,
     timeout: 10000,
     success: function(resp) {
+      if (resp.data[0].name == "hacker") {
+        toggleHacker();
+      }
       if (!resp.data[0].permission) {
         badPlayer();
         return;
