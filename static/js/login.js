@@ -112,7 +112,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
       } 
-      if (minPlayers > 1 && players.length < maxPlayers){
+      if (maxPlayers > 1 && players.length < maxPlayers){
         addWaitingCard();
       }
     },
