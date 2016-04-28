@@ -47,6 +47,18 @@ keycode 108 = 0x0000
 ! Alt_R Meta_R Alt_R Meta_R
 keycode 204 = 0x0000
 ! NoSymbol Alt_L NoSymbol Alt_L
+keycode 180 = 0x0000
+! XF86HomePage NoSymbol XF86HomePage
+keycode 163 = 0x0000
+! XF86Mail NoSymbol XF86Mail
+keycode 223 = 0x0000
+! XF86Mail NoSymbol XF86Mail
+keycode 121 = 0x0000
+! XF86AudioMute NoSymbol XF86AudioMute
+keycode 198 = 0x0000
+! XF86AudioMicMute NoSymbol XF86AudioMicMute
+keycode 148 = 0x0000
+! XF86Calculator NoSymbol XF86Calculator
 EOM
 
 cat > ~pi/.config/autostart/keyboard.desktop <<- EOM
