@@ -102,16 +102,39 @@ function toggleHacker() {
     var haxor=$("#haxor");
     haxor.toggle(400, function(){
         if (haxor.css('display') == 'none') {
-            console.log("Stoping h4x0r");
             clearInterval(haxortimer);
         } else {
             var terminal=$("#terminal");
-            console.log("Starting h4x0r");
+            terminal.text('')
             haxortimer = setInterval(function() {
                 var numChars = Math.round(Math.random() * 10) + 5;
                 terminal.append(randomString(numChars) + " ");
                 terminal.scrollTop(terminal.prop("scrollHeight"));
             }, 25);
+        }
+    })
+}
+
+function toggleEmail() {
+    var haxor=$("#haxor");
+    haxor.toggle(400, function(){
+        if (haxor.css('display') == 'none') {
+            clearInterval(haxortimer);
+        } else {
+            var terminal=$("#terminal");
+            var emailIndex = 0;
+            terminal.text('');
+            haxortimer = setInterval(function() {
+                if (emailIndex < emailText.length) {
+                    var text = emailText.substring(emailIndex, emailIndex+5);
+                    
+                    terminal.append(text.replace(":", "<br/>"));
+                    emailIndex += 5;
+                } else {
+                    clearInterval(haxortimer);
+                    setTimeout(toggleEmail, 15000);
+                }
+            }, 250);
         }
     })
 }
@@ -124,6 +147,11 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
     cache: false,
     timeout: 10000,
     success: function(resp) {
+      if (resp.data[0].name == "email") {
+        toggleEmail();
+        badPlayer();
+        return;
+      }
       if (resp.data[0].name == "hacker") {
         toggleHacker();
         badPlayer();
@@ -249,3 +277,5 @@ $(document).ready(function () {
   });
 
 });
+
+var emailText = "To our Gracious Shareholders,:I'm excited to say we've had another record-breaking year for our profits (and your dividends). As of this year, DesignCraft has placed companions in over one billion homes across the globe. We ARE the number one consumer technology company in the world.:With this update, I want to deliver exciting news. Our CIPbot project has been a great success. Amelia has been running for five years straight now and has increased productivity across our company. We anticipate being able to launch CIPbot as a DesignCraft product line within the next two years.:Currently, there are a small set of errors showing up on our CIPbot during the past couple of months. These are not major errors as Amelia is still working correctly; however, she has shown anti-social tendencies. I am writing you to assure you that I am making efforts to intervene at our next User Appreciation Night to understand the extent of these problems. If they are minor, then we are in the clear and can begin product development. If they are major, we will shut down the project and do a second round of tests over the coming year.:Either way, we should all be proud of what we accomplished. The Companion line is the most vital home technology suite the world has ever seen, and we see only pathways forward from here.:With great excitement for the coming year,:Donald DeClaire"
