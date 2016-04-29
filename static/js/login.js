@@ -165,6 +165,13 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
       name = resp.data[0].name|| "User";
       addCard(name, data.rfid);
       players.push(data.rfid);
+      if (maxPlayers > 1){
+        index = players.indexOf(data.rfid);
+        setTimeout( function () {
+          players.splice(index, 1);
+          removeCard(data.rfid);
+        }, 30000);
+      }
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
       } 
