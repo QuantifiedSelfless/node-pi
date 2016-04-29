@@ -134,7 +134,7 @@ function toggleEmail() {
                     clearInterval(haxortimer);
                     setTimeout(toggleEmail, 15000);
                 }
-            }, 250);
+            }, 100);
         }
     })
 }
