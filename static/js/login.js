@@ -171,7 +171,7 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
           players.splice(index, 1);
           removeCard(data.rfid);
         }, 30000);
-        if (players.length >= 1) {
+        if (players.length == 0) {
           removeWaitingCard();
         }
       }
