@@ -171,6 +171,9 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
           players.splice(index, 1);
           removeCard(data.rfid);
         }, 30000);
+        if (players.length >= 1) {
+          removeWaitingCard();
+        }
       }
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
