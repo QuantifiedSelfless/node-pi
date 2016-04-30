@@ -170,10 +170,11 @@ function make_AJAX_call(url, data, tryCount, retryLimit){
         setTimeout( function () {
           players.splice(index, 1);
           removeCard(data.rfid);
+          if (players.length == 0) {
+            removeWaitingCard();
+          }
         }, 30000);
-        if (players.length == 0) {
-          removeWaitingCard();
-        }
+        
       }
       if (players.length >= minPlayers) {
         startTimer = setTimeout(runGame, redirectionTimer);
